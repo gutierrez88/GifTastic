@@ -32,9 +32,11 @@ $("#submitbtn").on("click", function(event){
     buttonGen();
 });
 
-function showMe(){
+
+
+$(document).on("click",".teams", function(){
     
-    var name = $(this).attr("data.name");
+    var name = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10";
 
     $.ajax({
@@ -43,6 +45,4 @@ function showMe(){
     }).then(function(response){
         console.log(response)
     });
-};
-
-$(document).on("click",".teams", showMe);
+});

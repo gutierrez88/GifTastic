@@ -34,7 +34,7 @@ $("#submitbtn").on("click", function(event){
 
 function showMe(){
     
-    var name = $(this).attr("data.name")
+    var name = $(this).attr("data.name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10";
 
     $.ajax({
@@ -45,4 +45,4 @@ function showMe(){
     });
 };
 
-$(document).on("click",".teams", showMe());
+$(document).on("click",".teams", showMe);

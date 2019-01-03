@@ -10,7 +10,7 @@ function buttonGen() {
         var a = $("<button>");
         
         //adding my class attributes style and text for my buttons needed for searching
-        a.addClass("teams btn btn-dark btn-sm");
+        a.addClass("teams btn btn-transparent text-light btn-sm");
         a.attr("data-name", sportTeams[i]);
         a.css("margin","10px")
         a.text(sportTeams[i]);
@@ -35,14 +35,58 @@ $("#submitbtn").on("click", function(event){
 
 
 $(document).on("click",".teams", function(){
-    
+   
+    $(".results").empty();
+
     var name = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10&trending";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        console.log(response)
+
+        console.log(response);
+
+        var results = response.data;
+
+        
+
+        for ( var i=0; i < results.length; i++) {
+            var imgStill = results[i].images.original_still.url
+            var imgGif = results[i].images.original.url
+            var gifDiv = $("<div>");
+            var rating = results[i].rating;
+            var p = $("<p>").text("Rating: " + rating);
+            var sportGif = $("<img>");
+
+            sportGif.addClass("gif");
+            gifDiv.css("margin-bottom","20px");
+            gifDiv.css("margin-right","20px");
+            sportGif.css("max-width","250px");
+            gifDiv.css("float","left");
+            sportGif.attr("src", results[i].images.original_still.url);
+            gifDiv.append(p);
+            gifDiv.append(sportGif);
+
+            sportGif.attr("data-still", imgStill);
+            sportGif.attr("data-animate", imgGif);
+            sportGif.attr("data-state", "still");
+
+            $(".results").append(gifDiv);
+        };
+
+        $(".gif").on("click", function () {
+           
+            var state = $(this).attr("data-state");
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            };
+
+        });
     });
 });

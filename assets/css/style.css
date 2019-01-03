@@ -4,3 +4,23 @@
     margin-right: 0px;
     margin-left: 0px;
 }
+
+form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+body {
+    background-color: #000000;
+    background-image: url(../images/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+p {
+    color: #ffffff;
+}
+
+.card {
+    background-color: transparent;
+    color: white;
+}

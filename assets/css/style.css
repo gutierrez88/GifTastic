@@ -14,6 +14,7 @@ body {
     background-image: url(../images/background.jpeg);
     background-repeat: no-repeat;
     background-size: auto;
+    background-attachment: fixed;
 }
 
 p {
@@ -23,4 +24,15 @@ p {
 .card {
     background-color: transparent;
     color: white;
+}
+
+.btn {
+    border: 1px solid white;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #5a0707;
+    
 }

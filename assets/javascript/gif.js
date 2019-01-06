@@ -39,7 +39,7 @@ $(document).on("click",".teams", function(){
     $(".results").empty();
 
     var name = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10&trending";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + name + "&trending&api_key=Zt5D0Wjk7gYFB2fVpKH8KXysPwnOhyCt&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -60,7 +60,7 @@ $(document).on("click",".teams", function(){
             var p = $("<p>").text("Rating: " + rating);
             var sportGif = $("<img>");
 
-            sportGif.addClass("gif");
+            sportGif.addClass("gif img-fluid");
             gifDiv.css("margin-bottom","20px");
             gifDiv.css("margin-right","20px");
             sportGif.css("max-width","250px");
